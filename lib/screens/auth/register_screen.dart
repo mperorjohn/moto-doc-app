@@ -14,6 +14,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
+  final _vinController = TextEditingController();
+  final _vehicleMakeController = TextEditingController();
+  final _vehicleModelController = TextEditingController();
+  final _vehicleLicensePlateController = TextEditingController();
+  final _vehicleYearController = TextEditingController();
   final _businessNameController = TextEditingController();
   final _businessAddressController = TextEditingController();
   final _stateController = TextEditingController();
@@ -174,7 +179,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const SizedBox(height: 24),
 
-                        // Personal Information
+                        // PERSONAL INFORMATION SECTION
+                        Text(
+                          'Personal Information',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+
                         _buildTextField(
                           controller: _fullNameController,
                           label: 'Full Name',
@@ -191,7 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         _buildTextField(
                           controller: _emailController,
                           label: 'Email',
-                          hintText: 'Enter your email',
+                          hintText: 'rjohnoyekola@gmail.com',
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value?.isEmpty ?? true) {
@@ -210,7 +225,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         _buildTextField(
                           controller: _phoneController,
                           label: 'Phone Number',
-                          hintText: 'Enter your phone number',
+                          hintText: '08144060267',
                           keyboardType: TextInputType.phone,
                           validator: (value) {
                             if (value?.isEmpty ?? true) {
@@ -220,14 +235,133 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           },
                         ),
 
-                        // Business Information (only for mechanics)
+                        // CAR OWNER SPECIFIC FIELDS
+                        if (_isCarOwner) ...[
+                          const SizedBox(height: 24),
+                          Text(
+                            'Vehicle Information',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+
+                          // VIN with Auto Generate
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: _buildTextField(
+                                  controller: _vinController,
+                                  label: 'Vehicle Identification Number (VIN)',
+                                  hintText: '2839899',
+                                  validator: (value) {
+                                    if (value?.isEmpty ?? true) {
+                                      return 'Please enter VIN';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 24),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _vinController.text =
+                                          '1HGBH41JXMN${(100000 + (999999 - 100000) * (DateTime.now().millisecond / 1000)).round()}';
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppTheme.lightPurple,
+                                    foregroundColor: AppTheme.primaryPurple,
+                                    elevation: 0,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 12,
+                                    ),
+                                  ),
+                                  child: const Text('Auto Generate'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+
+                          _buildTextField(
+                            controller: _vehicleMakeController,
+                            label: 'Vehicle Make',
+                            hintText: 'Toyota',
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Please enter vehicle make';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16),
+
+                          _buildTextField(
+                            controller: _vehicleModelController,
+                            label: 'Vehicle Model',
+                            hintText: 'Camry',
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Please enter vehicle model';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16),
+
+                          _buildTextField(
+                            controller: _vehicleLicensePlateController,
+                            label: 'Vehicle License Plate',
+                            hintText: 'ABC-123-XY',
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Please enter license plate';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16),
+
+                          _buildTextField(
+                            controller: _vehicleYearController,
+                            label: 'Vehicle Year',
+                            hintText: '2020',
+                            keyboardType: TextInputType.number,
+                            suffixIcon: const Icon(Icons.expand_more),
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Please enter vehicle year';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+
+                        // MECHANIC SPECIFIC FIELDS
                         if (!_isCarOwner) ...[
+                          const SizedBox(height: 24),
+                          Text(
+                            'Business Information',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey[800],
+                            ),
+                          ),
                           const SizedBox(height: 16),
 
                           _buildTextField(
                             controller: _businessNameController,
                             label: 'Business Name',
-                            hintText: 'Enter your business name',
+                            hintText: 'Auto Care Solutions',
                             validator: (value) {
                               if (value?.isEmpty ?? true) {
                                 return 'Please enter your business name';
@@ -240,7 +374,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _buildTextField(
                             controller: _businessAddressController,
                             label: 'Business Address',
-                            hintText: 'Enter your business address',
+                            hintText: '123 Main Street, Victoria Island',
                             validator: (value) {
                               if (value?.isEmpty ?? true) {
                                 return 'Please enter your business address';
@@ -253,7 +387,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _buildTextField(
                             controller: _stateController,
                             label: 'State',
-                            hintText: 'Enter your state',
+                            hintText: 'Lagos',
                             validator: (value) {
                               if (value?.isEmpty ?? true) {
                                 return 'Please enter your state';
@@ -266,7 +400,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _buildTextField(
                             controller: _countryController,
                             label: 'Country',
-                            hintText: 'Enter your country',
+                            hintText: 'Nigeria',
                             validator: (value) {
                               if (value?.isEmpty ?? true) {
                                 return 'Please enter your country';
@@ -276,13 +410,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ],
 
+                        // PASSWORD SECTION
+                        const SizedBox(height: 24),
+                        Text(
+                          'Security Information',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[800],
+                          ),
+                        ),
                         const SizedBox(height: 16),
 
-                        // Password Fields
                         _buildTextField(
                           controller: _passwordController,
                           label: 'Password',
-                          hintText: 'Enter your password',
+                          hintText: '••••••••••',
                           obscureText: _obscurePassword,
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -311,7 +454,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         _buildTextField(
                           controller: _confirmPasswordController,
                           label: 'Confirm Password',
-                          hintText: 'Confirm your password',
+                          hintText: '••••••••••',
                           obscureText: _obscureConfirmPassword,
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -336,28 +479,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
+
+                        // TERMS AND CONDITIONS
+                        const SizedBox(height: 16),
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[50],
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.grey[200]!),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.info_outline,
+                                color: Colors.grey[600],
+                                size: 20,
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Text(
+                                  'By signing up, you agree to our Terms of Service and Privacy Policy',
+                                  style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
                         const SizedBox(height: 32),
 
                         // Sign Up Button
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState?.validate() ?? false) {
-                              // Handle registration
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    _isCarOwner
-                                        ? 'Car owner registration successful!'
-                                        : 'Mechanic registration successful!',
-                                  ),
-                                ),
-                              );
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginScreen(),
-                                ),
-                              );
+                              _showSuccessDialog();
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -366,9 +525,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          child: const Text(
-                            'Sign up',
-                            style: TextStyle(
+                          child: Text(
+                            _isCarOwner
+                                ? 'Sign up as Car Owner'
+                                : 'Sign up as Mechanic',
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
@@ -412,6 +573,56 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          title: Column(
+            children: [
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: AppTheme.greenAccent,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: const Icon(Icons.check, color: Colors.white, size: 30),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Registration Successful!',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          content: Text(
+            _isCarOwner
+                ? 'Your car owner account has been created successfully. You can now access all vehicle management features.'
+                : 'Your mechanic account has been created successfully. You can now start accepting service requests.',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.grey[600]),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+              child: const Text('Continue to Login'),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -472,6 +683,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _fullNameController.dispose();
     _emailController.dispose();
     _phoneController.dispose();
+    _vinController.dispose();
+    _vehicleMakeController.dispose();
+    _vehicleModelController.dispose();
+    _vehicleLicensePlateController.dispose();
+    _vehicleYearController.dispose();
     _businessNameController.dispose();
     _businessAddressController.dispose();
     _stateController.dispose();
