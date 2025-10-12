@@ -206,7 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         _buildTextField(
                           controller: _emailController,
                           label: 'Email',
-                          hintText: 'rjohnoyekola@gmail.com',
+                          hintText: 'johndoe@gmail.com',
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value?.isEmpty ?? true) {
