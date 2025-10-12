@@ -366,16 +366,22 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          _buildProfileOption(Icons.person_outline, 'Edit Profile'),
-          _buildProfileOption(Icons.settings_outlined, 'Settings'),
-          _buildProfileOption(Icons.help_outline, 'Help & Support'),
-          _buildProfileOption(Icons.logout, 'Logout', isDestructive: true),
+          _buildProfileOption(context, Icons.person_outline, 'Edit Profile'),
+          _buildProfileOption(context, Icons.settings_outlined, 'Settings'),
+          _buildProfileOption(context, Icons.help_outline, 'Help & Support'),
+          _buildProfileOption(
+            context,
+            Icons.logout,
+            'Logout',
+            isDestructive: true,
+          ),
         ],
       ),
     );
   }
 
   Widget _buildProfileOption(
+    BuildContext context,
     IconData icon,
     String title, {
     bool isDestructive = false,
@@ -395,8 +401,44 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         trailing: const Icon(Icons.chevron_right),
-        onTap: () {},
+        onTap: () {
+          if (title == 'Logout') {
+            _showLogoutDialog(context);
+          }
+        },
       ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close dialog
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/login',
+                  (route) => false,
+                );
+              },
+              style: TextButton.styleFrom(foregroundColor: Colors.red),
+              child: const Text('Logout'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
