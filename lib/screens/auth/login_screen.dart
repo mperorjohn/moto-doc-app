@@ -10,9 +10,17 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with TickerProviderStateMixin {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +104,36 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 16,
                           ),
                         ),
-                        const SizedBox(height: 32),
+                        const SizedBox(height: 24),
+
+                        // Tab Bar
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: TabBar(
+                            controller: _tabController,
+                            indicator: BoxDecoration(
+                              color: AppTheme.primaryPurple,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            dividerColor: Colors.transparent,
+                            labelColor: Colors.white,
+                            unselectedLabelColor: Colors.grey[600],
+                            labelStyle: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                            ),
+                            tabs: const [
+                              Tab(text: 'Car Owner'),
+                              Tab(text: 'Mechanic'),
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(height: 24),
                         TextField(
                           controller: _emailController,
                           decoration: const InputDecoration(
@@ -118,12 +155,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 24),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HomeScreen(),
-                              ),
-                            );
+                            // Different login logic based on selected tab
+                            final isCarOwner = _tabController.index == 0;
+
+                            if (isCarOwner) {
+                              // Navigate to car owner dashboard
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              );
+                            } else {
+                              // TODO: Navigate to mechanic dashboard when implemented
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              );
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 16),
@@ -170,6 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 }

@@ -7,7 +7,8 @@ import '../pages/dashboard_page.dart';
 import '../pages/vehicles_page.dart';
 import '../pages/requests_page.dart';
 import '../pages/notifications_page.dart';
-import '../pages/profile_page.dart';
+import '../pages/car_owner_profile_page.dart';
+import '../pages/find_mechanics_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const VehiclesPage(),
     const RequestsPage(),
     const NotificationsPage(),
-    const ProfilePage(),
+    const CarOwnerProfilePage(),
   ];
 
   @override
@@ -205,6 +206,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: 'Find Mechanics',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FindMechanicsPage(),
+                        ),
+                      );
                     },
                   ),
                   _buildDrawerItem(

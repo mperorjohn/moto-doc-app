@@ -6,6 +6,7 @@ class AppTheme {
   static const Color darkGrey = Color(0xFF6B7280);
   static const Color lightGrey = Color(0xFFF9FAFB);
   static const Color greenAccent = Color(0xFF10B981);
+  static const Color white = Color(0xFFFFFFFF);
 
   static MaterialColor primarySwatch = MaterialColor(0xFF6366F1, {
     50: const Color(0xFFEEF2FF),

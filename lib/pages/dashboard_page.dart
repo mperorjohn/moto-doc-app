@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import 'find_mechanics_page.dart';
+import 'request_repair_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -36,7 +38,14 @@ class DashboardPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FindMechanicsPage(),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.search, size: 16),
                         label: const Text('Find Mechanics'),
                         style: ElevatedButton.styleFrom(
@@ -52,7 +61,14 @@ class DashboardPage extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FindMechanicsPage(),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.build_circle, size: 16),
                         label: const Text('Request Repair'),
                         style: OutlinedButton.styleFrom(
@@ -216,7 +232,14 @@ class DashboardPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FindMechanicsPage(),
+                            ),
+                          );
+                        },
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppTheme.primaryPurple,
                           side: const BorderSide(color: AppTheme.primaryPurple),
@@ -256,24 +279,28 @@ class DashboardPage extends StatelessWidget {
                   'Request Repair',
                   Icons.build_circle,
                   AppTheme.primaryPurple,
+                  context,
                 ),
                 const SizedBox(height: 8),
                 _buildQuickActionButton(
                   'Find Mechanics',
                   Icons.search,
                   Colors.blue,
+                  context,
                 ),
                 const SizedBox(height: 8),
                 _buildQuickActionButton(
                   'Manage Vehicles',
                   Icons.directions_car,
                   Colors.grey,
+                  context,
                 ),
                 const SizedBox(height: 8),
                 _buildQuickActionButton(
                   'View Subscriptions',
                   Icons.subscriptions,
                   Colors.cyan,
+                  context,
                 ),
               ],
             ),
@@ -467,11 +494,32 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickActionButton(String title, IconData icon, Color color) {
+  Widget _buildQuickActionButton(
+    String title,
+    IconData icon,
+    Color color,
+    BuildContext context,
+  ) {
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton.icon(
-        onPressed: () {},
+        onPressed: () {
+          if (title == 'Find Mechanics') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FindMechanicsPage(),
+              ),
+            );
+          } else if (title == 'Request Repair') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FindMechanicsPage(),
+              ),
+            );
+          }
+        },
         icon: Icon(icon, size: 16),
         label: Text(title),
         style: OutlinedButton.styleFrom(

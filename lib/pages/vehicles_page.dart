@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/vehicle_card.dart';
+import '../components/add_vehicle_modal.dart';
 
 class VehiclesPage extends StatelessWidget {
   const VehiclesPage({super.key});
@@ -19,7 +20,12 @@ class VehiclesPage extends StatelessWidget {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const AddVehicleModal(),
+                  );
+                },
                 icon: const Icon(Icons.add),
                 label: const Text('Add Vehicle'),
               ),
