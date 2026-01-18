@@ -48,10 +48,12 @@ class _LoginScreenState extends State<LoginScreen>
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Icon(
-                        Icons.build,
-                        color: AppTheme.primaryGreen,
-                        size: 40,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -107,31 +109,31 @@ class _LoginScreenState extends State<LoginScreen>
                         const SizedBox(height: 24),
 
                         // Tab Bar
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: TabBar(
-                            controller: _tabController,
-                            indicator: BoxDecoration(
-                              color: AppTheme.primaryGreen,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            indicatorSize: TabBarIndicatorSize.tab,
-                            dividerColor: Colors.transparent,
-                            labelColor: Colors.white,
-                            unselectedLabelColor: Colors.grey[600],
-                            labelStyle: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14,
-                            ),
-                            tabs: const [
-                              Tab(text: 'Car Owner'),
-                              Tab(text: 'Mechanic'),
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.grey[100],
+                        //     borderRadius: BorderRadius.circular(8),
+                        //   ),
+                        //   child: TabBar(
+                        //     controller: _tabController,
+                        //     indicator: BoxDecoration(
+                        //       color: AppTheme.primaryGreen,
+                        //       borderRadius: BorderRadius.circular(8),
+                        //     ),
+                        //     indicatorSize: TabBarIndicatorSize.tab,
+                        //     dividerColor: Colors.transparent,
+                        //     labelColor: Colors.white,
+                        //     unselectedLabelColor: Colors.grey[600],
+                        //     labelStyle: const TextStyle(
+                        //       fontWeight: FontWeight.w500,
+                        //       fontSize: 14,
+                        //     ),
+                        //     tabs: const [
+                        //       Tab(text: 'Car Owner'),
+                        //       Tab(text: 'Mechanic'),
+                        //     ],
+                        //   ),
+                        // ),
 
                         const SizedBox(height: 24),
                         TextField(
@@ -156,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen>
                         ElevatedButton(
                           onPressed: () {
                             // Different login logic based on selected tab
-                            final isCarOwner = _tabController.index == 0;
+                            // final isCarOwner = _tabController.index == 0;
+                            const isCarOwner = true;
 
                             if (isCarOwner) {
                               // Navigate to car owner dashboard

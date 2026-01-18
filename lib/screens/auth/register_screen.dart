@@ -48,13 +48,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: AppTheme.primaryGreen,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: const Icon(
-                      Icons.build,
-                      color: Colors.white,
-                      size: 30,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Image.asset(
+                        'assets/images/logo.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -103,80 +105,80 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 24),
 
                         // Account Type Toggle
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _isCarOwner = true;
-                                    });
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 12,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color:
-                                          _isCarOwner
-                                              ? AppTheme.primaryGreen
-                                              : Colors.transparent,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      'Car Owner',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color:
-                                            _isCarOwner
-                                                ? Colors.white
-                                                : Colors.grey[600],
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _isCarOwner = false;
-                                    });
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 12,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color:
-                                          !_isCarOwner
-                                              ? AppTheme.primaryGreen
-                                              : Colors.transparent,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      'Mechanic',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color:
-                                            !_isCarOwner
-                                                ? Colors.white
-                                                : Colors.grey[600],
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.grey[100],
+                        //     borderRadius: BorderRadius.circular(8),
+                        //   ),
+                        //   child: Row(
+                        //     children: [
+                        //       Expanded(
+                        //         child: GestureDetector(
+                        //           onTap: () {
+                        //             setState(() {
+                        //               _isCarOwner = true;
+                        //             });
+                        //           },
+                        //           child: Container(
+                        //             padding: const EdgeInsets.symmetric(
+                        //               vertical: 12,
+                        //             ),
+                        //             decoration: BoxDecoration(
+                        //               color:
+                        //                   _isCarOwner
+                        //                       ? AppTheme.primaryGreen
+                        //                       : Colors.transparent,
+                        //               borderRadius: BorderRadius.circular(8),
+                        //             ),
+                        //             child: Text(
+                        //               'Car Owner',
+                        //               textAlign: TextAlign.center,
+                        //               style: TextStyle(
+                        //                 color:
+                        //                     _isCarOwner
+                        //                         ? Colors.white
+                        //                         : Colors.grey[600],
+                        //                 fontWeight: FontWeight.w500,
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       Expanded(
+                        //         child: GestureDetector(
+                        //           onTap: () {
+                        //             setState(() {
+                        //               _isCarOwner = false;
+                        //             });
+                        //           },
+                        //           child: Container(
+                        //             padding: const EdgeInsets.symmetric(
+                        //               vertical: 12,
+                        //             ),
+                        //             decoration: BoxDecoration(
+                        //               color:
+                        //                   !_isCarOwner
+                        //                       ? AppTheme.primaryGreen
+                        //                       : Colors.transparent,
+                        //               borderRadius: BorderRadius.circular(8),
+                        //             ),
+                        //             child: Text(
+                        //               'Mechanic',
+                        //               textAlign: TextAlign.center,
+                        //               style: TextStyle(
+                        //                 color:
+                        //                     !_isCarOwner
+                        //                         ? Colors.white
+                        //                         : Colors.grey[600],
+                        //                 fontWeight: FontWeight.w500,
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                         const SizedBox(height: 24),
 
                         // PERSONAL INFORMATION SECTION
