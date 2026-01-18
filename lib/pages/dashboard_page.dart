@@ -49,7 +49,7 @@ class DashboardPage extends StatelessWidget {
                         icon: const Icon(Icons.search, size: 16),
                         label: const Text('Find Mechanics'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppTheme.primaryPurple,
+                          backgroundColor: AppTheme.primaryGreen,
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
@@ -72,8 +72,8 @@ class DashboardPage extends StatelessWidget {
                         icon: const Icon(Icons.build_circle, size: 16),
                         label: const Text('Request Repair'),
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: AppTheme.primaryPurple,
-                          side: const BorderSide(color: AppTheme.primaryPurple),
+                          foregroundColor: AppTheme.primaryGreen,
+                          side: const BorderSide(color: AppTheme.primaryGreen),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -130,8 +130,8 @@ class DashboardPage extends StatelessWidget {
                     OutlinedButton(
                       onPressed: () {},
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.primaryPurple,
-                        side: const BorderSide(color: AppTheme.primaryPurple),
+                        foregroundColor: AppTheme.primaryGreen,
+                        side: const BorderSide(color: AppTheme.primaryGreen),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 8,
@@ -241,8 +241,8 @@ class DashboardPage extends StatelessWidget {
                           );
                         },
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: AppTheme.primaryPurple,
-                          side: const BorderSide(color: AppTheme.primaryPurple),
+                          foregroundColor: AppTheme.primaryGreen,
+                          side: const BorderSide(color: AppTheme.primaryGreen),
                         ),
                         child: const Text('Request Repair'),
                       ),
@@ -278,7 +278,7 @@ class DashboardPage extends StatelessWidget {
                 _buildQuickActionButton(
                   'Request Repair',
                   Icons.build_circle,
-                  AppTheme.primaryPurple,
+                  AppTheme.primaryGreen,
                   context,
                 ),
                 const SizedBox(height: 8),
@@ -328,7 +328,7 @@ class DashboardPage extends StatelessWidget {
                       onPressed: () {},
                       child: Text(
                         'View All',
-                        style: TextStyle(color: AppTheme.primaryPurple),
+                        style: TextStyle(color: AppTheme.primaryGreen),
                       ),
                     ),
                   ],
@@ -376,7 +376,7 @@ class DashboardPage extends StatelessWidget {
                       onPressed: () {},
                       child: Text(
                         'View All',
-                        style: TextStyle(color: AppTheme.primaryPurple),
+                        style: TextStyle(color: AppTheme.primaryGreen),
                       ),
                     ),
                   ],
@@ -420,7 +420,7 @@ class DashboardPage extends StatelessWidget {
                       onPressed: () {},
                       child: Text(
                         'View All',
-                        style: TextStyle(color: AppTheme.primaryPurple),
+                        style: TextStyle(color: AppTheme.primaryGreen),
                       ),
                     ),
                   ],

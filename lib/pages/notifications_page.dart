@@ -28,7 +28,7 @@ class NotificationsPage extends StatelessWidget {
             time: '5 minutes ago',
             isUnread: true,
             icon: Icons.build_circle,
-            color: AppTheme.greenAccent,
+            color: AppTheme.primaryGreen,
           ),
           _buildNotificationItem(
             title: 'Maintenance Reminder',
@@ -63,12 +63,12 @@ class NotificationsPage extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isUnread ? AppTheme.lightPurple.withOpacity(0.3) : Colors.white,
+        color: isUnread ? AppTheme.lightGreen.withOpacity(0.3) : Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color:
               isUnread
-                  ? AppTheme.primaryPurple.withOpacity(0.2)
+                  ? AppTheme.primaryGreen.withOpacity(0.2)
                   : Colors.grey[200]!,
         ),
       ),
@@ -106,7 +106,7 @@ class NotificationsPage extends StatelessWidget {
                         width: 8,
                         height: 8,
                         decoration: const BoxDecoration(
-                          color: AppTheme.primaryPurple,
+                          color: AppTheme.primaryGreen,
                           shape: BoxShape.circle,
                         ),
                       ),

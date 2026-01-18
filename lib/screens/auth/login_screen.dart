@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen>
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [AppTheme.primaryPurple, Colors.blue[400]!],
+            colors: [AppTheme.primaryGreen, Colors.blue[400]!],
           ),
         ),
         child: SafeArea(
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen>
                       ),
                       child: const Icon(
                         Icons.build,
-                        color: AppTheme.primaryPurple,
+                        color: AppTheme.primaryGreen,
                         size: 40,
                       ),
                     ),
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen>
                           child: TabBar(
                             controller: _tabController,
                             indicator: BoxDecoration(
-                              color: AppTheme.primaryPurple,
+                              color: AppTheme.primaryGreen,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             indicatorSize: TabBarIndicatorSize.tab,
@@ -197,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen>
                           style: OutlinedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             side: const BorderSide(
-                              color: AppTheme.primaryPurple,
+                              color: AppTheme.primaryGreen,
                             ),
                           ),
                           child: const Text(

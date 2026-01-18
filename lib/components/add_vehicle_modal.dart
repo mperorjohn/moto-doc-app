@@ -74,8 +74,8 @@ class _AddVehicleModalState extends State<AddVehicleModal> {
                       });
                     },
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.primaryPurple,
-                      side: const BorderSide(color: AppTheme.primaryPurple),
+                      foregroundColor: AppTheme.primaryGreen,
+                      side: const BorderSide(color: AppTheme.primaryGreen),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 12,
@@ -191,7 +191,7 @@ class _AddVehicleModalState extends State<AddVehicleModal> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: const BorderSide(
-                        color: AppTheme.primaryPurple,
+                        color: AppTheme.primaryGreen,
                       ),
                     ),
                     contentPadding: const EdgeInsets.all(16),
@@ -224,12 +224,12 @@ class _AddVehicleModalState extends State<AddVehicleModal> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Vehicle added successfully!'),
-                            backgroundColor: AppTheme.greenAccent,
+                            backgroundColor: AppTheme.primaryGreen,
                           ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.primaryPurple,
+                        backgroundColor: AppTheme.primaryGreen,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
@@ -280,7 +280,7 @@ class _AddVehicleModalState extends State<AddVehicleModal> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppTheme.primaryPurple),
+          borderSide: const BorderSide(color: AppTheme.primaryGreen),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

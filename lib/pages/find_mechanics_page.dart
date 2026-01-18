@@ -17,16 +17,14 @@ class _FindMechanicsPageState extends State<FindMechanicsPage> {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
           'Find Mechanics',
           style: TextStyle(
-            color: Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
@@ -82,7 +80,7 @@ class _FindMechanicsPageState extends State<FindMechanicsPage> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryPurple,
+                    backgroundColor: AppTheme.primaryGreen,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
@@ -284,8 +282,8 @@ class _FindMechanicsPageState extends State<FindMechanicsPage> {
                 child: OutlinedButton(
                   onPressed: () {},
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: AppTheme.primaryPurple,
-                    side: const BorderSide(color: AppTheme.primaryPurple),
+                    foregroundColor: AppTheme.primaryGreen,
+                    side: const BorderSide(color: AppTheme.primaryGreen),
                     padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
                   child: const Text('View Details'),
@@ -310,7 +308,7 @@ class _FindMechanicsPageState extends State<FindMechanicsPage> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryPurple,
+                    backgroundColor: AppTheme.primaryGreen,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                   ),

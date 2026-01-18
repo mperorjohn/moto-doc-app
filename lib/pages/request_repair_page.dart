@@ -25,10 +25,9 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -36,7 +35,6 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
               ? 'Request Repair / ${widget.mechanicName}'
               : 'Request Repair / Select Mechanic',
           style: const TextStyle(
-            color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
@@ -79,7 +77,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                     height: 2,
                     color:
                         _currentStep > 1
-                            ? AppTheme.primaryPurple
+                            ? AppTheme.primaryGreen
                             : Colors.grey[200],
                   ),
                 ),
@@ -95,7 +93,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                     height: 2,
                     color:
                         _currentStep > 2
-                            ? AppTheme.primaryPurple
+                            ? AppTheme.primaryGreen
                             : Colors.grey[200],
                   ),
                 ),
@@ -165,7 +163,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
               border: Border.all(
                 color:
                     _selectedVehicle != null
-                        ? AppTheme.primaryPurple
+                        ? AppTheme.primaryGreen
                         : Colors.grey[200]!,
                 width: _selectedVehicle != null ? 2 : 1,
               ),
@@ -195,7 +193,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: AppTheme.primaryPurple,
+                          color: AppTheme.primaryGreen,
                         ),
                       ),
                       SizedBox(height: 4),
@@ -211,7 +209,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                     width: 24,
                     height: 24,
                     decoration: const BoxDecoration(
-                      color: AppTheme.primaryPurple,
+                      color: AppTheme.primaryGreen,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -259,13 +257,13 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
             decoration: BoxDecoration(
               color:
                   _selectedService == 'Oil Change'
-                      ? AppTheme.lightPurple
+                      ? AppTheme.lightGreen
                       : Colors.white,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color:
                     _selectedService == 'Oil Change'
-                        ? AppTheme.primaryPurple
+                        ? AppTheme.primaryGreen
                         : Colors.grey[200]!,
                 width: _selectedService == 'Oil Change' ? 2 : 1,
               ),
@@ -290,7 +288,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: AppTheme.primaryPurple,
+                          color: AppTheme.primaryGreen,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(
@@ -309,7 +307,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                 const Text(
                   '€50,000.00',
                   style: TextStyle(
-                    color: AppTheme.greenAccent,
+                    color: AppTheme.primaryGreen,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -419,7 +417,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: AppTheme.primaryPurple),
+                borderSide: const BorderSide(color: AppTheme.primaryGreen),
               ),
               contentPadding: const EdgeInsets.all(16),
             ),
@@ -450,7 +448,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppTheme.primaryPurple),
+              borderSide: const BorderSide(color: AppTheme.primaryGreen),
             ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -538,7 +536,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Repair request submitted successfully!'),
-                        backgroundColor: AppTheme.greenAccent,
+                        backgroundColor: AppTheme.primaryGreen,
                       ),
                     );
                   }
@@ -546,7 +544,7 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
               }
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.primaryPurple,
+              backgroundColor: AppTheme.primaryGreen,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
@@ -578,9 +576,9 @@ class _RequestRepairPageState extends State<RequestRepairPage> {
           decoration: BoxDecoration(
             color:
                 isCompleted
-                    ? AppTheme.primaryPurple
+                    ? AppTheme.primaryGreen
                     : isActive
-                    ? AppTheme.primaryPurple
+                    ? AppTheme.primaryGreen
                     : Colors.grey[200],
             shape: BoxShape.circle,
           ),

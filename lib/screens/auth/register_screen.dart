@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: AppTheme.greenAccent,
+                      color: AppTheme.primaryGreen,
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: const Icon(
@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: AppTheme.primaryPurple,
+                      color: AppTheme.primaryGreen,
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -124,7 +124,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     decoration: BoxDecoration(
                                       color:
                                           _isCarOwner
-                                              ? AppTheme.primaryPurple
+                                              ? AppTheme.primaryGreen
                                               : Colors.transparent,
                                       borderRadius: BorderRadius.circular(8),
                                     ),
@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     decoration: BoxDecoration(
                                       color:
                                           !_isCarOwner
-                                              ? AppTheme.primaryPurple
+                                              ? AppTheme.primaryGreen
                                               : Colors.transparent,
                                       borderRadius: BorderRadius.circular(8),
                                     ),
@@ -276,8 +276,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppTheme.lightPurple,
-                                    foregroundColor: AppTheme.primaryPurple,
+                                    backgroundColor: AppTheme.lightGreen,
+                                    foregroundColor: AppTheme.primaryGreen,
                                     elevation: 0,
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 16,
@@ -557,7 +557,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: const Text(
                                 'Sign in instead',
                                 style: TextStyle(
-                                  color: AppTheme.primaryPurple,
+                                  color: AppTheme.primaryGreen,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -590,7 +590,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: AppTheme.greenAccent,
+                  color: AppTheme.primaryGreen,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: const Icon(Icons.check, color: Colors.white, size: 30),
@@ -666,7 +666,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppTheme.primaryPurple),
+              borderSide: const BorderSide(color: AppTheme.primaryGreen),
             ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,

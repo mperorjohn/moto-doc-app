@@ -43,3 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+
+# command to start it on chrome : flutter run -d chrome
+# command to start it on linux : flutter run -d linux

@@ -18,7 +18,7 @@ class ServiceRequestCard extends StatelessWidget {
   Color get statusColor {
     switch (status.toLowerCase()) {
       case 'completed':
-        return AppTheme.greenAccent;
+        return AppTheme.primaryGreen;
       case 'in progress':
         return Colors.orange;
       case 'scheduled':

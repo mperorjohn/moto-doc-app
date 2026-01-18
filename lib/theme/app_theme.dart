@@ -1,50 +1,53 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primaryPurple = Color(0xFF6366F1);
-  static const Color lightPurple = Color(0xFFEEF2FF);
+  static const Color primaryGreen = Color(0xFF10B981);
+  static const Color lightGreen = Color(0xFFECFDF5);
   static const Color darkGrey = Color(0xFF6B7280);
   static const Color lightGrey = Color(0xFFF9FAFB);
-  static const Color greenAccent = Color(0xFF10B981);
   static const Color white = Color(0xFFFFFFFF);
 
-  static MaterialColor primarySwatch = MaterialColor(0xFF6366F1, {
-    50: const Color(0xFFEEF2FF),
-    100: const Color(0xFFE0E7FF),
-    200: const Color(0xFFC7D2FE),
-    300: const Color(0xFFA5B4FC),
-    400: const Color(0xFF818CF8),
-    500: const Color(0xFF6366F1),
-    600: const Color(0xFF4F46E5),
-    700: const Color(0xFF4338CA),
-    800: const Color(0xFF3730A3),
-    900: const Color(0xFF312E81),
+  static MaterialColor primarySwatch = MaterialColor(0xFF10B981, {
+    50: const Color(0xFFECFDF5),
+    100: const Color(0xFFD1FAE5),
+    200: const Color(0xFFA7F3D0),
+    300: const Color(0xFF6EE7B7),
+    400: const Color(0xFF34D399),
+    500: const Color(0xFF10B981),
+    600: const Color(0xFF059669),
+    700: const Color(0xFF047857),
+    800: const Color(0xFF065F46),
+    900: const Color(0xFF064E3B),
   });
 
   static ThemeData lightTheme = ThemeData(
     primarySwatch: primarySwatch,
-    primaryColor: primaryPurple,
+    primaryColor: primaryGreen,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
+      backgroundColor: primaryGreen,
       elevation: 0,
-      iconTheme: IconThemeData(color: darkGrey),
+      iconTheme: IconThemeData(color: white),
       titleTextStyle: TextStyle(
-        color: Colors.black,
+        color: white,
         fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: primaryPurple,
-        foregroundColor: Colors.white,
+        backgroundColor: primaryGreen,
+        foregroundColor: white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: primaryGreen, width: 2),
+      ),
     ),
   );
 }

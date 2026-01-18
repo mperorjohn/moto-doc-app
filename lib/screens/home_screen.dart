@@ -34,12 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.grey[50],
       drawer: _buildDrawer(),
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
         leading: Builder(
           builder:
               (context) => IconButton(
-                icon: const Icon(Icons.menu, color: Colors.black),
+                icon: const Icon(Icons.menu),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
         ),
@@ -90,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppTheme.primaryPurple,
+        selectedItemColor: AppTheme.primaryGreen,
         unselectedItemColor: Colors.grey,
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -140,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 32,
                     height: 32,
                     decoration: BoxDecoration(
-                      color: AppTheme.greenAccent,
+                      color: AppTheme.primaryGreen,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Icon(
@@ -315,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
               isDestructive
                   ? Colors.red
                   : isSelected
-                  ? AppTheme.primaryPurple
+                  ? AppTheme.primaryGreen
                   : Colors.grey[600],
           size: 20,
         ),
@@ -326,14 +325,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 isDestructive
                     ? Colors.red
                     : isSelected
-                    ? AppTheme.primaryPurple
+                    ? AppTheme.primaryGreen
                     : Colors.grey[800],
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             fontSize: 14,
           ),
         ),
         selected: isSelected && !isDestructive,
-        selectedTileColor: AppTheme.primaryPurple.withOpacity(0.1),
+        selectedTileColor: AppTheme.primaryGreen.withOpacity(0.1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         onTap: onTap,

@@ -57,13 +57,13 @@ class VehicleCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              color: AppTheme.greenAccent.withOpacity(0.1),
+              color: AppTheme.primaryGreen.withOpacity(0.1),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
               status,
               style: const TextStyle(
-                color: AppTheme.greenAccent,
+                color: AppTheme.primaryGreen,
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),

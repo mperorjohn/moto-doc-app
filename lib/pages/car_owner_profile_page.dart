@@ -25,7 +25,7 @@ class CarOwnerProfilePage extends StatelessWidget {
                   icon: const Icon(Icons.edit, size: 16),
                   label: const Text('Edit Profile'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryPurple,
+                    backgroundColor: AppTheme.primaryGreen,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
@@ -183,7 +183,7 @@ class CarOwnerProfilePage extends StatelessWidget {
                       icon: const Icon(Icons.add, size: 16),
                       label: const Text('Add Vehicle'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.primaryPurple,
+                        backgroundColor: AppTheme.primaryGreen,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
@@ -342,7 +342,7 @@ class CarOwnerProfilePage extends StatelessWidget {
                     icon: const Icon(Icons.lock, size: 16),
                     label: const Text('Change Password'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.primaryPurple,
+                      backgroundColor: AppTheme.primaryGreen,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
@@ -459,7 +459,7 @@ class CarOwnerProfilePage extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppTheme.primaryPurple),
+              borderSide: const BorderSide(color: AppTheme.primaryGreen),
             ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
