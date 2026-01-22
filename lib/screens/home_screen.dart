@@ -228,21 +228,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   const SizedBox(height: 24),
 
-                  // MARKETPLACE Section
-                  _buildSectionHeader('MARKETPLACE'),
-                  _buildDrawerItem(
-                    icon: Icons.shopping_cart_outlined,
-                    title: 'Service Marketplace',
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ServiceMarketplacePage(),
-                        ),
-                      );
-                    },
-                  ),
+                  // // MARKETPLACE Section
+                  // _buildSectionHeader('MARKETPLACE'),
+                  // _buildDrawerItem(
+                  //   icon: Icons.shopping_cart_outlined,
+                  //   title: 'Service Marketplace',
+                  //   onTap: () {
+                  //     Navigator.pop(context);
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => const ServiceMarketplacePage(),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                   _buildDrawerItem(
                     icon: Icons.credit_card,
                     title: 'Pay Later',
