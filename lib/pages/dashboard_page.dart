@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import 'find_mechanics_page.dart';
 import 'request_repair_page.dart';
+import 'maintenance_record_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -373,7 +374,14 @@ class DashboardPage extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MaintenanceRecordPage(),
+                          ),
+                        );
+                      },
                       child: Text(
                         'View All',
                         style: TextStyle(color: AppTheme.primaryGreen),

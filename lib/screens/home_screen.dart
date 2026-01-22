@@ -10,6 +10,9 @@ import '../pages/notifications_page.dart';
 import '../pages/car_owner_profile_page.dart';
 import '../pages/find_mechanics_page.dart';
 
+import '../pages/service_marketplace_page.dart';
+import '../pages/maintenance_record_page.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -18,6 +21,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+// ... (existing code)
+
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
@@ -26,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const RequestsPage(),
     const NotificationsPage(),
     const CarOwnerProfilePage(),
+    const ServiceMarketplacePage(),
   ];
 
   @override
@@ -222,11 +228,66 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   const SizedBox(height: 24),
 
+                  // MARKETPLACE Section
+                  _buildSectionHeader('MARKETPLACE'),
+                  _buildDrawerItem(
+                    icon: Icons.shopping_cart_outlined,
+                    title: 'Service Marketplace',
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ServiceMarketplacePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  _buildDrawerItem(
+                    icon: Icons.credit_card,
+                    title: 'Pay Later',
+                    trailing: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.orange.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text(
+                        'Coming Soon',
+                        style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+
+                  const SizedBox(height: 24),
+
                   // RECORDS Section
                   _buildSectionHeader('RECORDS'),
                   _buildDrawerItem(
                     icon: Icons.subscriptions,
                     title: 'Subscriptions',
+                    trailing: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.orange.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text(
+                        'Coming Soon',
+                        style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                     },
@@ -234,6 +295,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   _buildDrawerItem(
                     icon: Icons.receipt_long,
                     title: 'Invoices',
+                    trailing: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.orange.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text(
+                        'Coming Soon',
+                        style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                     },
@@ -243,6 +319,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: 'Maintenance Records',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MaintenanceRecordPage(),
+                        ),
+                      );
                     },
                   ),
 
@@ -298,6 +380,7 @@ class _HomeScreenState extends State<HomeScreen> {
     required String title,
     bool isSelected = false,
     bool isDestructive = false,
+    Widget? trailing,
     required VoidCallback onTap,
   }) {
     return Container(
@@ -326,6 +409,7 @@ class _HomeScreenState extends State<HomeScreen> {
             fontSize: 14,
           ),
         ),
+        trailing: trailing,
         selected: isSelected && !isDestructive,
         selectedTileColor: AppTheme.primaryGreen.withOpacity(0.1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
