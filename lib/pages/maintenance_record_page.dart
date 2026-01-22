@@ -9,46 +9,72 @@ class MaintenanceRecordPage extends StatefulWidget {
 }
 
 class _MaintenanceRecordPageState extends State<MaintenanceRecordPage> {
-  // Dummy data
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  // Dummy data with new fields
   final List<Map<String, dynamic>> _records = [
     {
-      'date': 'Oct 24, 2023',
+      'id': '1',
+      'recordType': 'Repair',
       'service': 'Oil Change',
       'vehicle': 'Audi Weiweo 2016',
+      'mechanic': 'AutoFix Garage',
       'cost': '€50.00',
       'status': 'Completed',
-      'shop': 'AutoFix Garage',
+      'paymentStatus': 'Paid',
+      'date': 'Oct 24, 2023',
     },
     {
-      'date': 'Sep 15, 2023',
+      'id': '2',
+      'recordType': 'Maintenance',
       'service': 'Brake Pad Replacement',
       'vehicle': 'Audi Weiweo 2016',
+      'mechanic': 'QuickStop Mechanics',
       'cost': '€120.00',
       'status': 'Completed',
-      'shop': 'QuickStop Mechanics',
+      'paymentStatus': 'Paid',
+      'date': 'Sep 15, 2023',
     },
     {
-      'date': 'Aug 02, 2023',
+      'id': '3',
+      'recordType': 'Inspection',
       'service': 'General Inspection',
       'vehicle': 'Toyota Camry 2020',
+      'mechanic': 'Official Dealer',
       'cost': '€80.00',
       'status': 'Completed',
-      'shop': 'Official Dealer',
+      'paymentStatus': 'Pending',
+      'date': 'Aug 02, 2023',
     },
     {
-      'date': 'Jul 10, 2023',
+      'id': '4',
+      'recordType': 'Maintenance',
       'service': 'Tire Rotation',
       'vehicle': 'Toyota Camry 2020',
+      'mechanic': 'Tire Plus',
       'cost': '€30.00',
-      'status': 'Completed',
-      'shop': 'Tire Plus',
+      'status': 'Processing',
+      'paymentStatus': 'Unpaid',
+      'date': 'Jul 10, 2023',
     },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50], // Light grey background like other pages
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppTheme.primaryGreen,
@@ -64,165 +90,214 @@ class _MaintenanceRecordPageState extends State<MaintenanceRecordPage> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        actions: [
-           IconButton(
-            icon: const Icon(Icons.filter_list, color: Colors.white),
-            onPressed: () {
-              // TODO: Implement filter
-            },
-          ),
-        ],
       ),
-      body: Column(
-        children: [
-          // Summary / Header
-          Container(
-            padding: const EdgeInsets.all(20),
-            color: Colors.white,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Total Spent',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Filter Section
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.grey[200]!),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                         Expanded(child: _buildDropdown('Record Type', 'All Types')),
+                         const SizedBox(width: 16),
+                         Expanded(child: _buildDropdown('Status', 'All Status')),
+                         const SizedBox(width: 16),
+                         Expanded(child: _buildDropdown('Payment Status', 'All Payment Status')),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.search, size: 16),
+                          label: const Text('Search'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppTheme.primaryGreen,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '€280.00',
-                        style: TextStyle(
-                          color: AppTheme.primaryGreen,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                        const SizedBox(width: 12),
+                        OutlinedButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.refresh, size: 16),
+                          label: const Text('Clear'),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.grey,
+                             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // Table Section
+              Container(
+                width: double.infinity,
+                 decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.grey[200]!),
+                ),
+                child: Scrollbar(
+                  controller: _scrollController,
+                  child: SingleChildScrollView(
+                    controller: _scrollController,
+                    scrollDirection: Axis.horizontal,
+                    child: DataTable(
+                      headingRowColor: MaterialStateProperty.all(Colors.grey[50]),
+                      columns: const [
+                        DataColumn(label: Text('#', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('RECORD TYPE', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('SERVICE TYPE', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('VEHICLE', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('MECHANIC', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('COST', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('STATUS', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('PAYMENT STATUS', style: TextStyle(fontWeight: FontWeight.bold))),
+                         DataColumn(label: Text('DATE', style: TextStyle(fontWeight: FontWeight.bold))),
+                        DataColumn(label: Text('ACTIONS', style: TextStyle(fontWeight: FontWeight.bold))),
+                      ],
+                      rows: _records.map((record) => DataRow(
+                        cells: [
+                          DataCell(Text(record['id'])),
+                          DataCell(Text(record['recordType'])),
+                          DataCell(Text(record['service'])),
+                          DataCell(Text(record['vehicle'])),
+                          DataCell(Text(record['mechanic'])),
+                           DataCell(Text(record['cost'], style: const TextStyle(fontWeight: FontWeight.bold, color: AppTheme.primaryGreen))),
+                          DataCell(_buildStatusBadge(record['status'])),
+                           DataCell(_buildPaymentStatusBadge(record['paymentStatus'])),
+                          DataCell(Text(record['date'])),
+                          DataCell(
+                            Row(
+                              children: [
+                                IconButton(icon: const Icon(Icons.visibility, size: 18, color: Colors.blue), onPressed: () {}),
+                                IconButton(icon: const Icon(Icons.download, size: 18, color: Colors.grey), onPressed: () {}),
+                              ],
+                            )
+                          ),
+                        ],
+                      )).toList(),
+                    ),
                   ),
                 ),
-
-              ],
-            ),
+              ),
+               const SizedBox(height: 30),
+            ],
           ),
-          
-          const SizedBox(height: 16),
-
-          // List
-          Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: _records.length,
-              separatorBuilder: (ctx, index) => const SizedBox(height: 12),
-              itemBuilder: (context, index) {
-                final record = _records[index];
-                return _buildRecordCard(record);
-              },
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 
-  Widget _buildRecordCard(Map<String, dynamic> record) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey[200]!),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    record['service'],
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    record['status'],
-                    style: const TextStyle(
-                      color: Colors.green,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Icon(Icons.calendar_today, size: 14, color: Colors.grey[500]),
-                const SizedBox(width: 4),
-                Text(
-                  record['date'],
-                  style: TextStyle(color: Colors.grey[600], fontSize: 13),
-                ),
-                const SizedBox(width: 16),
-                Icon(Icons.directions_car, size: 14, color: Colors.grey[500]),
-                const SizedBox(width: 4),
-                Text(
-                  record['vehicle'],
-                  style: TextStyle(color: Colors.grey[600], fontSize: 13),
-                ),
-              ],
-            ),
-             const SizedBox(height: 12),
-             const Divider(height: 1),
-             const SizedBox(height: 12),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 Row(
-                   children: [
-                     Icon(Icons.store, size: 16, color: Colors.grey[500]),
-                     const SizedBox(width: 4),
-                     Text(
-                       record['shop'],
-                       style: TextStyle(color: Colors.grey[600], fontSize: 13),
-                     ),
-                   ],
-                 ),
-                 Text(
-                   record['cost'],
-                   style: const TextStyle(
-                     color: AppTheme.primaryGreen,
-                     fontWeight: FontWeight.bold,
-                     fontSize: 16,
-                   ),
-                 ),
+  Widget _buildDropdown(String label, String value) {
+     return Column(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       children: [
+         Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w500)),
+         const SizedBox(height: 4),
+         Container(
+           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+           decoration: BoxDecoration(
+             border: Border.all(color: Colors.grey[300]!),
+             borderRadius: BorderRadius.circular(4),
+           ),
+           child: DropdownButtonHideUnderline(
+             child: DropdownButton<String>(
+               value: value,
+               isExpanded: true,
+               icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+               items: [
+                 DropdownMenuItem(value: value, child: Text(value, style: const TextStyle(fontSize: 14))),
                ],
+               onChanged: (val) {},
              ),
-          ],
-        ),
+           ),
+         ),
+       ],
+     );
+  }
+
+  Widget _buildStatusBadge(String status) {
+    Color color;
+    Color bgColor;
+
+    switch (status.toLowerCase()) {
+      case 'completed':
+        color = Colors.green;
+        bgColor = Colors.green.withOpacity(0.1);
+        break;
+      case 'processing':
+        color = Colors.orange;
+        bgColor = Colors.orange.withOpacity(0.1);
+        break;
+      default:
+        color = Colors.grey;
+        bgColor = Colors.grey.withOpacity(0.1);
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        status,
+        style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+
+   Widget _buildPaymentStatusBadge(String status) {
+    Color color;
+    Color bgColor;
+
+    switch (status.toLowerCase()) {
+      case 'paid':
+        color = Colors.green;
+        bgColor = Colors.green.withOpacity(0.1);
+        break;
+      case 'pending':
+        color = Colors.orange;
+        bgColor = Colors.orange.withOpacity(0.1);
+        break;
+      case 'unpaid':
+         color = Colors.red;
+        bgColor = Colors.red.withOpacity(0.1);
+        break;
+      default:
+        color = Colors.grey;
+        bgColor = Colors.grey.withOpacity(0.1);
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        status,
+        style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w500),
       ),
     );
   }
